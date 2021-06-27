@@ -1,0 +1,23 @@
+.Appbar{
+    background-color: #FFFF !important;
+    max-height: 60px ;
+    color: black !important;
+    font-size: 6rem !important;
+    position: fixed !important;
+}
+
+.app-text{
+    color: black;
+}
+.cart-btn{
+    color: black !important;
+    background-color: black;
+}
+.login-btn{
+    background-color:#DADADA !important ;
+    color: black !important;
+}
+.login-btn:hover{
+    background-color: white !important;
+    color: black !important;
+}

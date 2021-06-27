@@ -1,0 +1,23 @@
+.item{
+    max-width: 345px;
+}
+.card-image{
+    min-height: 250px ;
+    max-width: 250px ;    
+    object-fit: contain ;
+    margin: 0 auto;
+    margin-top: 16px;
+}
+.BookItems{
+    margin-top: 16px;
+    margin-left: 16px !important;
+    margin-right: 16px !important ;
+}
+.add-to-cart-btn{
+    justify-content: center !important;
+    
+}
+.a-cart-btn{
+    /* background-color: gray !important; */
+    color: #575757 !important;
+}
