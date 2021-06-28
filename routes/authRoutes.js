@@ -11,4 +11,14 @@ router.get(
 
 router.get('/google/callback', passport.authenticate('google'));
 
+router.get('/api/logout', (req, res) => {
+  req.logout();
+  res.send(req.user);
+});
+
+router.get('/api/user', (req, res) => {
+  console.log(req.user);
+  res.send(req.user);
+});
+
 module.exports = router;
