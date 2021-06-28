@@ -1,13 +1,17 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const passport = require('passport');
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
+const productRoutes = require('./routes/productRoutes');
 const sequelize = require('./db');
 const User = require('./models/user');
 const cookieSession = require('cookie-session');
 require('./services/passport');
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
@@ -24,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/product', productRoutes);
 
 try {
   sequelize.sync().then(
