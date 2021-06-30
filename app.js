@@ -23,12 +23,21 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req, res) => {
-  res.send({ hello: 'world' });
-});
+// app.get('/', (req, res) => {
+//   res.send({ hello: 'world' });
+// });
 
 app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/biuld'));
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 try {
   sequelize.sync().then(

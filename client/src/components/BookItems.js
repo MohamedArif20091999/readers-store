@@ -73,6 +73,9 @@ const BookItems = () => {
               <Button href="/auth/google" className="a-cart-btn" variant="contained" disableElevation>
                 go to goole
               </Button>
+              <Button href="/auth/api/user" className="a-cart-btn" variant="contained" disableElevation>
+                show user
+              </Button>
               {/* <Button size="small" color="primary">
                 Learn More
               </Button> */}

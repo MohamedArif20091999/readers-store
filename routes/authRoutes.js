@@ -9,7 +9,10 @@ router.get(
   })
 );
 
-router.get('/google/callback', passport.authenticate('google'));
+router.get('/google/callback', passport.authenticate('google'), (req, res) => {
+  console.log('Will redirect to home page');
+  res.redirect('/');
+});
 
 router.get('/api/logout', (req, res) => {
   req.logout();
