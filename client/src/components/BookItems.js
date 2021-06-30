@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions } from '@material-ui/core';
+import { Box, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions, Link } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import './css/Card.css';
 
@@ -67,8 +67,14 @@ const BookItems = () => {
               </Box>
             </Grid>
             <CardActions className="add-to-cart-btn">
-              <Button className="a-cart-btn" variant="contained" disableElevation>
+              {/* <Button className="a-cart-btn" variant="contained" disableElevation>
                 Add to cart
+              </Button> */}
+              <Button href="/auth/google" className="a-cart-btn" variant="contained" disableElevation>
+                go to goole
+              </Button>
+              <Button href="/auth/api/user" className="a-cart-btn" variant="contained" disableElevation>
+                show user
               </Button>
               {/* <Button size="small" color="primary">
                 Learn More
