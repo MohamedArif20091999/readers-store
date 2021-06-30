@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../actions';
 import { Box, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions, Link } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import './css/Card.css';
 
 const BookItems = () => {
+  const dispatch = useDispatch();
+  let products = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  console.log(products);
   const imageURL =
     'https://images.unsplash.com/photo-1624542313043-40df8401b342?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80';
 
@@ -16,10 +26,10 @@ const BookItems = () => {
               <CardMedia className="card-image" image={imageURL} title="Contemplative Reptile" />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Book title
+                  {products[0].title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Book description
+                  book.description
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -75,6 +85,9 @@ const BookItems = () => {
               </Button>
               <Button href="/auth/api/user" className="a-cart-btn" variant="contained" disableElevation>
                 show user
+              </Button>
+              <Button href="/product/all-products" className="a-cart-btn" variant="contained" disableElevation>
+                show prods
               </Button>
               {/* <Button size="small" color="primary">
                 Learn More
