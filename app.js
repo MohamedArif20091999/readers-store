@@ -7,6 +7,7 @@ const productRoutes = require('./routes/productRoutes');
 const sequelize = require('./db');
 const User = require('./models/user');
 const cookieSession = require('cookie-session');
+const path = require('path');
 require('./services/passport');
 
 const app = express();
@@ -31,11 +32,10 @@ app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/biuld'));
+  app.use(express.static(path.resolve(__dirname, './client/build')));
 
-  const path = require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
   });
 }
 
