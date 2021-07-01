@@ -32,7 +32,7 @@ const BookItems = () => {
                       {product.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                      {product.description.slice(0, 95)}
+                      {product.description.slice(0, 95) + '...'}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -42,6 +42,9 @@ const BookItems = () => {
                     {product.ratings_count}
                   </Typography>
                 </CardActions>
+                <Typography className="price" variant="h5">
+                  {'$' + product.price}
+                </Typography>
                 <CardActions className="add-to-cart-btn">
                   <Button className="a-cart-btn" variant="contained" disableElevation>
                     Add to cart
