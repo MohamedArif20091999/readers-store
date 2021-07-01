@@ -21,10 +21,10 @@ const BookItems = () => {
       return (
         // <div>
         //   <h1>Show items</h1>
-        <Grid container direction="rows" spacing={4} className="main-grid">
+        <Grid container direction="rows" spacing={0} className="main-grid">
           {products.map((product) => (
             <Grid container item xs={12} sm={6} md={4} mx="auto">
-              <Card>
+              <Card class="">
                 <CardActionArea>
                   <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={product.image} title="Contemplative Reptile" />
                   <CardContent>
@@ -32,12 +32,12 @@ const BookItems = () => {
                       {product.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                      Lizards are a widespread group of squamate reptiles, with over 6,000 species
+                      {product.description.slice(0, 95)}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Rating name="half-rating" value={product.rating} readOnly></Rating>
+                  <Rating name="half-rating-read" value={product.rating} precision={0.5} readOnly></Rating>
                   <Typography variant="body2" color="textSecondary" component="p">
                     {product.ratings_count}
                   </Typography>
