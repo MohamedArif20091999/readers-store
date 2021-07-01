@@ -35,21 +35,21 @@ const BookItems = () => {
                       {product.description.slice(0, 95) + '...'}
                     </Typography>
                   </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Rating name="half-rating-read" value={product.rating} precision={0.5} readOnly></Rating>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    {product.ratings_count}
+                  <CardActions>
+                    <Rating name="half-rating-read" value={product.rating} precision={0.5} readOnly></Rating>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {product.ratings_count}
+                    </Typography>
+                  </CardActions>
+                  <Typography className="price" variant="h5">
+                    {'$' + product.price}
                   </Typography>
-                </CardActions>
-                <Typography className="price" variant="h5">
-                  {'$' + product.price}
-                </Typography>
-                <CardActions className="add-to-cart-btn">
-                  <Button className="a-cart-btn" variant="contained" disableElevation>
-                    Add to cart
-                  </Button>
-                </CardActions>
+                  <CardActions className="add-to-cart-btn">
+                    <Button className="a-cart-btn" variant="contained" disableElevation>
+                      Add to cart
+                    </Button>
+                  </CardActions>
+                </CardActionArea>
               </Card>
             </Grid>
           ))}
