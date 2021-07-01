@@ -21,3 +21,16 @@
     /* background-color: gray !important; */
     color: #575757 !important;
 }
+
+
+.bi{
+    margin-top: 50px ;
+}
+.card{
+    padding: 16px !important;
+}
+.main-grid{
+    /* margin: 0 16px ; */
+    padding-left: 8px;
+    margin-top: 8px;
+}

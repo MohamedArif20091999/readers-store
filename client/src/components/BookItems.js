@@ -19,54 +19,121 @@ const BookItems = () => {
   const renderItems = () => {
     if (products.length) {
       return (
-        <React.Fragment>
+        // <div>
+        //   <h1>Show items</h1>
+        <Grid container direction="rows" spacing={4} className="main-grid">
           {products.map((product) => (
-            <Card className="item">
-              <CardActionArea>
-                <CardMedia className="card-image" image={imageURL} title="Contemplative Reptile" />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {product.title}
-                  </Typography>
+            <Grid container item xs={12} sm={6} md={4} mx="auto">
+              <Card>
+                <CardActionArea>
+                  <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={product.image} title="Contemplative Reptile" />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {product.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      Lizards are a widespread group of squamate reptiles, with over 6,000 species
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Rating name="half-rating" value={product.rating} readOnly></Rating>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Book description
+                    {product.ratings_count}
                   </Typography>
-                </CardContent>
-              </CardActionArea>
-              <Grid container item>
-                <Box style={{ textAlign: 'center' }}>
-                  <Rating name="half-rating" value={4} readOnly></Rating>
-                </Box>
-                <Box mt={0.5} pl={1}>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    13,453
-                  </Typography>
-                </Box>
-              </Grid>
-              <CardActions className="add-to-cart-btn">
-                <Button className="a-cart-btn" variant="contained" disableElevation>
-                  Add to cart
-                </Button>
-                {/* <Button size="small" color="primary">
-                   Learn More
-                 </Button> */}
-              </CardActions>
-            </Card>
+                </CardActions>
+                <CardActions className="add-to-cart-btn">
+                  <Button className="a-cart-btn" variant="contained" disableElevation>
+                    Add to cart
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
           ))}
-        </React.Fragment>
+        </Grid>
       );
     }
     return <h1>Show loader</h1>;
   };
-  return (
-    // <div className="BookItems">
-    <Grid container spacing={3}>
-      <Grid item xs={12} sm={6} md={4} mx="auto">
-        {renderItems()}
-      </Grid>
-    </Grid>
-    // </div>
-  );
+  return renderItems();
+
+  // <div className="BookItems">
+  // <Grid container direction="rows" spacing={4} className="main-grid">
+  // {renderItems()}
+  //  <Grid container item xs={12} sm={6} md={4} mx="auto"></Grid>
+  // <Grid container item xs={12} sm={6} md={4} mx="auto">
+  //   <Card>
+  //     <CardActionArea>
+  //       <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={imageURL} title="Contemplative Reptile" />
+  //       <CardContent>
+  //         <Typography gutterBottom variant="h5" component="h2">
+  //           Lizard
+  //         </Typography>
+  //         <Typography variant="body2" color="textSecondary" component="p">
+  //           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+  //         </Typography>
+  //       </CardContent>
+  //     </CardActionArea>
+  //     <CardActions>
+  //       <Button size="small" color="primary">
+  //         Share
+  //       </Button>
+  //       <Button size="small" color="primary">
+  //         Learn More
+  //       </Button>
+  //     </CardActions>
+  //   </Card>
+  // </Grid>
+  // <Grid container item xs={12} sm={6} md={4} spacing={3}>
+  //   <Card>
+  //     <CardActionArea>
+  //       <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={imageURL} title="Contemplative Reptile" />
+  //       <CardContent>
+  //         <Typography gutterBottom variant="h5" component="h2">
+  //           Lizard
+  //         </Typography>
+  //         <Typography variant="body2" color="textSecondary" component="p">
+  //           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+  //         </Typography>
+  //       </CardContent>
+  //     </CardActionArea>
+  //     <CardActions>
+  //       <Button size="small" color="primary">
+  //         Share
+  //       </Button>
+  //       <Button size="small" color="primary">
+  //         Learn More
+  //       </Button>
+  //     </CardActions>
+  //   </Card>
+  // </Grid>
+  // <Grid container item xs={12} sm={6} md={4} spacing={3}>
+  //   <Card>
+  //     <CardActionArea>
+  //       <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={imageURL} title="Contemplative Reptile" />
+  //       <CardContent>
+  //         <Typography gutterBottom variant="h5" component="h2">
+  //           Lizard
+  //         </Typography>
+  //         <Typography variant="body2" color="textSecondary" component="p">
+  //           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+  //         </Typography>
+  //       </CardContent>
+  //     </CardActionArea>
+  //     <CardActions>
+  //       <Button size="small" color="primary">
+  //         Share
+  //       </Button>
+  //       <Button size="small" color="primary">
+  //         Learn More
+  //       </Button>
+  //     </CardActions>
+  //   </Card>
+  // </Grid>
+  {
+    /* </Grid> */
+  }
+  // </div>
 };
 
 export default BookItems;
