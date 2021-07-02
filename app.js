@@ -8,6 +8,11 @@ const sequelize = require('./db');
 const User = require('./models/user');
 const cookieSession = require('cookie-session');
 const path = require('path');
+
+const Book = require('./models/book');
+const Cart = require('./models/cart');
+const CartItem = require('./models/cart-items');
+
 require('./services/passport');
 
 const app = express();
@@ -30,6 +35,11 @@ app.use(passport.session());
 
 app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
+
+User.hasOne(Cart);
+Cart.belongsTo(User);
+Cart.belongsToMany(Book, { through: CartItem });
+Book.belongsToMany(Cart, { through: CartItem });
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve(__dirname, './client/build')));
