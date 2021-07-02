@@ -8,7 +8,7 @@ const sequelize = require('./db');
 const User = require('./models/user');
 const cookieSession = require('cookie-session');
 const path = require('path');
-
+const cartRoutes = require('./routes/cartRoutes');
 const Book = require('./models/book');
 const Cart = require('./models/cart');
 const CartItem = require('./models/cart-items');
@@ -35,6 +35,7 @@ app.use(passport.session());
 
 app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
+app.use('/cart', cartRoutes);
 
 User.hasOne(Cart);
 Cart.belongsTo(User);

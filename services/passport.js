@@ -20,17 +20,15 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken);
-      console.log('ref:', refreshToken);
-      console.log(profile.id);
       const user = await User.findOne({ where: { google_id: profile.id } });
       if (!user) {
-        console.log('user is not defined');
+        console.log('user not exist!');
         const user = await User.create({
           google_id: profile.id,
           email: profile.emails[0].value,
           username: profile.displayName,
         });
+        await user.createCart();
         done(null, user);
       } else {
         done(null, user);

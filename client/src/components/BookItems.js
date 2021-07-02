@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../actions';
+import { fetchProducts, addToCart } from '../actions';
 import { Box, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions, Link } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import './css/Card.css';
@@ -11,6 +11,11 @@ const BookItems = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  const addToCartClicked = (prodId) => {
+    console.log(prodId);
+    dispatch(addToCart(prodId));
+  };
 
   console.log(products);
   const imageURL =
@@ -45,7 +50,7 @@ const BookItems = () => {
                     {'$' + product.price}
                   </Typography>
                   <CardActions className="add-to-cart-btn">
-                    <Button className="a-cart-btn" variant="contained" disableElevation>
+                    <Button onClick={() => addToCartClicked(product.id)} className="a-cart-btn" variant="contained" disableElevation>
                       Add to cart
                     </Button>
                   </CardActions>
