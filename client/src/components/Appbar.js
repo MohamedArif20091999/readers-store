@@ -19,7 +19,7 @@ const Header = () => {
           <div style={{ marginLeft: 'auto' }}>
             <Box display="flex" justifyContent="flex-end">
               <Box pl={3} pb={3}>
-                <Button variant="contained" className="login-btn" color="#0000" disableElevation>
+                <Button href="/auth/google" variant="contained" className="login-btn" color="#0000" disableElevation>
                   LOGIN
                 </Button>
               </Box>

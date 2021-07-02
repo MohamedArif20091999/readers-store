@@ -4,7 +4,7 @@
 .card-image{
     min-height: 250px ;
     max-width: 250px ;    
-    object-fit: contain ;
+    /* object-fit: contain ; */
     margin: 0 auto;
     margin-top: 16px;
 }
@@ -20,4 +20,21 @@
 .a-cart-btn{
     /* background-color: gray !important; */
     color: #575757 !important;
+}
+
+
+.bi{
+    margin-top: 50px ;
+}
+.card{
+    padding: 16px !important;
+}
+.main-grid{
+    /* margin: 0 16px ; */
+    padding-left: 8px;
+    margin-top: 8px;
+}
+.price{
+    padding-left: 10px;
+    color: #212121 ;
 }
