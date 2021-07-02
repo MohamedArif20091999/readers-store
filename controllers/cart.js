@@ -1,5 +1,13 @@
 const Book = require('../models/book');
 
+exports.getCart = async (req, res) => {
+  console.log('Fetch and give cartItems');
+  const cart = await req.user.getCart();
+  const cartItems = await cart.getBooks();
+  console.log(cartItems);
+  res.status(200).send(cartItems);
+};
+
 exports.addToCart = async (req, res) => {
   const prodId = req.body.productId;
   const fetchedCart = await req.user.getCart();

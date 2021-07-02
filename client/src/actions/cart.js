@@ -16,3 +16,10 @@ export const addToCart = (prodId) => async (dispatch) => {
   console.log(res.data);
   dispatch({ type: 'NEW_CART_ITEM', payload: res.data });
 };
+
+export const getCart = () => async (dispatch) => {
+  console.log('get cart');
+  const res = await axios.get('/cart/user-cart');
+  console.log(res);
+  dispatch({ type: 'GET_CART', payload: res.data });
+};
