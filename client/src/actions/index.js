@@ -1,4 +1,7 @@
 import axios from 'axios';
+// import { addToCart } from './cart';
+
+export * from './cart';
 
 export const fetchProducts = () => async (dispatch) => {
   const { data } = await axios.get('/product/all-products');

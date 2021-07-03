@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { cartItemsReducer } from './cart';
 
 export const productsReducer = (state = [], action) => {
   switch (action.type) {
@@ -12,4 +13,5 @@ export const productsReducer = (state = [], action) => {
 
 export default combineReducers({
   products: productsReducer,
+  cart: cartItemsReducer,
 });
