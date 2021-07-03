@@ -15,6 +15,8 @@ exports.addToCart = async (req, res) => {
   if (checkProductIsPresent.length) {
     const setQuantity = checkProductIsPresent[0].cart_item.quantity + 1;
     await fetchedCart.addBook(checkProductIsPresent[0], { through: { quantity: setQuantity } });
+    console.log('OLD ITEM:', await fetchedCart.getBooks({ where: { id: prodId } }));
+    res.send(await fetchedCart.getBooks({ where: { id: prodId } }));
   } else {
     let product = await Book.findByPk(prodId);
     await fetchedCart.addBook(product, {

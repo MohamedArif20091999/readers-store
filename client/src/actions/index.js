@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { addToCart } from './cart';
+// import { addToCart } from './cart';
 
 export * from './cart';
 

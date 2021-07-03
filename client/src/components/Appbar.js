@@ -16,14 +16,16 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getCart());
+    console.log(cart);
   }, []);
 
-  const fetchCart = () => {
-    dispatch(getCart());
+  const get = () => {
+    alert(JSON.stringify(cart));
+    console.log(cart);
   };
 
   const renderItem = () => {
-    if (cart.length >= 0) {
+    if (cart.length) {
       return <h1>Fetching cart {cart.length}</h1>;
     }
     return <h1>show cart loader</h1>;
@@ -44,7 +46,7 @@ const Header = () => {
                 </Button>
               </Box>
               <Box pl={1}>
-                <IconButton onClick={fetchCart} className="cart-btn">
+                <IconButton onClick={get} className="cart-btn">
                   <Badge color="secondary" badgeContent={cart.length}>
                     <ShoppingBasketIcon fontSize="" />
                   </Badge>

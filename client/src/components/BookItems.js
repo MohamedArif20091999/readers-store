@@ -8,12 +8,14 @@ import './css/Card.css';
 const BookItems = () => {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.products);
+  let cart = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
 
   const addToCartClicked = (prodId) => {
     console.log(prodId);
+    console.log('cart:', cart);
     dispatch(addToCart(prodId));
   };
 
