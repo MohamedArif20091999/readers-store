@@ -22,5 +22,6 @@ exports.addToCart = async (req, res) => {
     await fetchedCart.addBook(product, {
       through: { quantity: 1 },
     });
+    res.send(await fetchedCart.getBooks({ where: { id: prodId } }));
   }
 };
