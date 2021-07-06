@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCart } from '../actions';
+import { getCart, deleteItem } from '../actions';
 
 import Header from './Appbar';
 import { Button, Card, CardContent, Typography, IconButton, CardMedia } from '@material-ui/core';
@@ -21,6 +21,7 @@ const CheckOut = () => {
 
   const deleteFromCart = (id) => {
     alert(id);
+    dispatch(deleteItem(id));
   };
 
   console.log(cartItems.length);

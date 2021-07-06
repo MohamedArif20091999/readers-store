@@ -25,3 +25,14 @@ exports.addToCart = async (req, res) => {
     res.send(await fetchedCart.getBooks({ where: { id: prodId } }));
   }
 };
+
+exports.deleteItem = async (req, res) => {
+  console.log('delete from server');
+  console.log(req.user);
+  const fetchedCart = await req.user.getCart();
+  const checkProductIsPresent = await fetchedCart.getBooks({ where: { id: req.body.productId } });
+  console.log('...', checkProductIsPresent[0]);
+  const deleteItem = await checkProductIsPresent[0].cart_item.destroy();
+  console.log(deleteItem);
+  res.send(req.body.productId);
+};

@@ -23,3 +23,10 @@ export const getCart = () => async (dispatch) => {
   console.log(res);
   dispatch({ type: 'GET_CART', payload: res.data });
 };
+
+export const deleteItem = (id) => async (dispatch) => {
+  console.log('delete');
+  const { data } = await axios.post('/cart/delete-item', { productId: id });
+  console.log(data);
+  dispatch({ type: 'DELETE_ITEM', payload: data });
+};
