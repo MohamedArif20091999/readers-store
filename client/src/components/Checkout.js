@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCart, deleteItem } from '../actions';
-
 import Header from './Appbar';
-import { Button, Card, CardContent, Typography, IconButton, CardMedia } from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Button, Card, CardContent, Typography, CardMedia } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
 import './css/Checkout.css';
 
 const CheckOut = () => {
@@ -20,7 +15,6 @@ const CheckOut = () => {
   }, []);
 
   const deleteFromCart = (id) => {
-    alert(id);
     dispatch(deleteItem(id));
   };
 

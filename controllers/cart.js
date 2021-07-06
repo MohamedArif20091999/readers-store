@@ -1,10 +1,8 @@
 const Book = require('../models/book');
 
 exports.getCart = async (req, res) => {
-  console.log('Fetch and give cartItems');
   const cart = await req.user.getCart();
   const cartItems = await cart.getBooks();
-  console.log(cartItems);
   res.status(200).send(cartItems);
 };
 
@@ -15,7 +13,6 @@ exports.addToCart = async (req, res) => {
   if (checkProductIsPresent.length) {
     const setQuantity = checkProductIsPresent[0].cart_item.quantity + 1;
     await fetchedCart.addBook(checkProductIsPresent[0], { through: { quantity: setQuantity } });
-    console.log('OLD ITEM:', await fetchedCart.getBooks({ where: { id: prodId } }));
     res.send(await fetchedCart.getBooks({ where: { id: prodId } }));
   } else {
     let product = await Book.findByPk(prodId);
@@ -27,12 +24,8 @@ exports.addToCart = async (req, res) => {
 };
 
 exports.deleteItem = async (req, res) => {
-  console.log('delete from server');
-  console.log(req.user);
   const fetchedCart = await req.user.getCart();
   const checkProductIsPresent = await fetchedCart.getBooks({ where: { id: req.body.productId } });
-  console.log('...', checkProductIsPresent[0]);
-  const deleteItem = await checkProductIsPresent[0].cart_item.destroy();
-  console.log(deleteItem);
+  await checkProductIsPresent[0].cart_item.destroy();
   res.send(req.body.productId);
 };
