@@ -1,0 +1,16 @@
+.container{
+    
+}
+.card{
+    width: 60%;
+    margin: 0 auto ;
+    margin-bottom: 32px;
+}
+.image{
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+.delete-btn{
+  text-align: center;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getCart } from '../actions';
 import Appbar from '@material-ui/core/AppBar';
 import { Box, Toolbar, Typography } from '@material-ui/core';
@@ -13,6 +14,7 @@ import './css/Appbar.css';
 const Header = () => {
   const dispatch = useDispatch();
   let cart = useSelector((state) => state.cart);
+  let history = useHistory();
 
   useEffect(() => {
     dispatch(getCart());
@@ -20,8 +22,8 @@ const Header = () => {
   }, []);
 
   const get = () => {
-    alert(JSON.stringify(cart));
     console.log(cart);
+    history.push('/checkout');
   };
 
   const renderItem = () => {
