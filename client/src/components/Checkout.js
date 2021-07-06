@@ -23,7 +23,6 @@ const CheckOut = () => {
   const renderItems = () => {
     if (cartItems.length) {
       return (
-        // <h1>CartItems</h1>
         <div>
           <Header></Header>
           <div className="container">

@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, addToCart } from '../actions';
-import { Box, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions, Link } from '@material-ui/core';
+import { Box, CircularProgress, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions, Link, Backdrop } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import './css/Card.css';
 
 const BookItems = () => {
+  const [open, setOpen] = useState(true);
+
   const dispatch = useDispatch();
   let products = useSelector((state) => state.products);
   let cart = useSelector((state) => state.cart);
@@ -26,8 +28,6 @@ const BookItems = () => {
   const renderItems = () => {
     if (products.length) {
       return (
-        // <div>
-        //   <h1>Show items</h1>
         <Grid container direction="rows" spacing={0} className="main-grid">
           {products.map((product) => (
             <Grid container item xs={12} sm={6} md={4} mx="auto">
@@ -63,111 +63,15 @@ const BookItems = () => {
         </Grid>
       );
     }
-    return <h1>Show loader</h1>;
+    return (
+      <div>
+        <Backdrop open={open}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </div>
+    );
   };
   return renderItems();
-
-  // <div className="BookItems">
-  // <Grid container direction="rows" spacing={4} className="main-grid">
-  // {renderItems()}
-  //  <Grid container item xs={12} sm={6} md={4} mx="auto"></Grid>
-  // <Grid container item xs={12} sm={6} md={4} mx="auto">
-  //   <Card>
-  //     <CardActionArea>
-  //       <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={imageURL} title="Contemplative Reptile" />
-  //       <CardContent>
-  //         <Typography gutterBottom variant="h5" component="h2">
-  //           Lizard
-  //         </Typography>
-  //         <Typography variant="body2" color="textSecondary" component="p">
-  //           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-  //         </Typography>
-  //       </CardContent>
-  //     </CardActionArea>
-  //     <CardActions>
-  //       <Button size="small" color="primary">
-  //         Share
-  //       </Button>
-  //       <Button size="small" color="primary">
-  //         Learn More
-  //       </Button>
-  //     </CardActions>
-  //   </Card>
-  // </Grid>
-  // <Grid container item xs={12} sm={6} md={4} spacing={3}>
-  //   <Card>
-  //     <CardActionArea>
-  //       <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={imageURL} title="Contemplative Reptile" />
-  //       <CardContent>
-  //         <Typography gutterBottom variant="h5" component="h2">
-  //           Lizard
-  //         </Typography>
-  //         <Typography variant="body2" color="textSecondary" component="p">
-  //           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-  //         </Typography>
-  //       </CardContent>
-  //     </CardActionArea>
-  //     <CardActions>
-  //       <Button size="small" color="primary">
-  //         Share
-  //       </Button>
-  //       <Button size="small" color="primary">
-  //         Learn More
-  //       </Button>
-  //     </CardActions>
-  //   </Card>
-  // </Grid>
-  // <Grid container item xs={12} sm={6} md={4} spacing={3}>
-  //   <Card>
-  //     <CardActionArea>
-  //       <CardMedia component="img" alt="Contemplative Reptile" className="card-image" image={imageURL} title="Contemplative Reptile" />
-  //       <CardContent>
-  //         <Typography gutterBottom variant="h5" component="h2">
-  //           Lizard
-  //         </Typography>
-  //         <Typography variant="body2" color="textSecondary" component="p">
-  //           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-  //         </Typography>
-  //       </CardContent>
-  //     </CardActionArea>
-  //     <CardActions>
-  //       <Button size="small" color="primary">
-  //         Share
-  //       </Button>
-  //       <Button size="small" color="primary">
-  //         Learn More
-  //       </Button>
-  //     </CardActions>
-  //   </Card>
-  // </Grid>
-  {
-    /* </Grid> */
-  }
-  // </div>
 };
 
 export default BookItems;
-
-// const renderItems = () => {
-//   if (products.length) {
-//     return (
-//       <div>
-//         {products.map((product) => (
-
-//         ))}
-//         )
-//       </div>
-//     );
-//   }
-//   return <h1>Show loader</h1>;
-// };
-
-// return (
-//   <div className="BookItems">
-//     {renderItems()}
-//     <Grid container spacing={3}>
-//       <Grid item xs={12} sm={6} md={4} mx="auto"></Grid>
-//       {renderItems()}
-//     </Grid>
-//   </div>
-// );

@@ -28,40 +28,39 @@ const Header = () => {
 
   const renderItem = () => {
     if (cart.length) {
-      return <h1>Fetching cart {cart.length}</h1>;
+      return (
+        <div>
+          <Appbar elevation={0} className="Appbar" position="fixed">
+            <Toolbar>
+              <Typography onClick={() => history.push('/')} className="app-text" variant="h5">
+                ReactStore
+              </Typography>
+              <div style={{ marginLeft: 'auto' }}>
+                <Box display="flex" justifyContent="flex-end">
+                  <Box pl={3} pb={3}>
+                    <Button href="/auth/google" variant="contained" className="login-btn" color="#0000" disableElevation>
+                      LOGIN
+                    </Button>
+                  </Box>
+                  <Box pl={1}>
+                    <IconButton onClick={get} className="cart-btn">
+                      <Badge color="secondary" badgeContent={cart.length}>
+                        <ShoppingBasketIcon fontSize="" />
+                      </Badge>
+                    </IconButton>
+                  </Box>
+                </Box>
+              </div>
+            </Toolbar>
+          </Appbar>
+          <Toolbar />
+          {/* {renderItem()} */}
+        </div>
+      );
     }
-    return <h1>show cart loader</h1>;
+    return <h1></h1>;
   };
-
-  return (
-    <div>
-      <Appbar elevation={0} className="Appbar" position="fixed">
-        <Toolbar>
-          <Typography className="app-text" variant="h5">
-            ReactStore
-          </Typography>
-          <div style={{ marginLeft: 'auto' }}>
-            <Box display="flex" justifyContent="flex-end">
-              <Box pl={3} pb={3}>
-                <Button href="/auth/google" variant="contained" className="login-btn" color="#0000" disableElevation>
-                  LOGIN
-                </Button>
-              </Box>
-              <Box pl={1}>
-                <IconButton onClick={get} className="cart-btn">
-                  <Badge color="secondary" badgeContent={cart.length}>
-                    <ShoppingBasketIcon fontSize="" />
-                  </Badge>
-                </IconButton>
-              </Box>
-            </Box>
-          </div>
-        </Toolbar>
-      </Appbar>
-      <Toolbar />
-      {renderItem()}
-    </div>
-  );
+  return renderItem();
 };
 
 export default Header;

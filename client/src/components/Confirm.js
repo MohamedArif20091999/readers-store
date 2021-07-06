@@ -12,9 +12,6 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {/* <Typography variant="h3" className="text">
-        Confirm order
-      </Typography> */}
       <div className="total">
         <Typography variant="h2">Total: ${sum} </Typography>
       </div>
