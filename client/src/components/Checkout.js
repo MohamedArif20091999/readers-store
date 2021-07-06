@@ -4,6 +4,7 @@ import { getCart, deleteItem } from '../actions';
 import Header from './Appbar';
 import { Button, Card, CardContent, Typography, CardMedia } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Confirm from './Confirm';
 import './css/Checkout.css';
 
 const CheckOut = () => {
@@ -55,7 +56,12 @@ const CheckOut = () => {
     return <h1>Loading....</h1>;
   };
 
-  return renderItems();
+  return (
+    <div>
+      {renderItems()}
+      <Confirm></Confirm>
+    </div>
+  );
 };
 
 export default CheckOut;
