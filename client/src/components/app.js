@@ -3,9 +3,11 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { fetchProducts } from '../actions';
-import Header from './Appbar';
-import BookItems from './BookItems';
-// import Home from './Home';
+// import Header from './Appbar';
+// import BookItems from './BookItems';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './Home';
+import CheckOut from './Checkout';
 import './main.css';
 
 const theme = createMuiTheme({
@@ -17,10 +19,14 @@ const theme = createMuiTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Header></Header>
-        <BookItems></BookItems>
-      </div>
+      <BrowserRouter>
+        <div>
+          {/* <Home></Home> */}
+
+          <Route path="/" exact component={Home} />
+          <Route path="/checkout" component={CheckOut} />
+        </div>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
