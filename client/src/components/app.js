@@ -1,6 +1,8 @@
 import { AppBar } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../actions';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Home';
 import CheckOut from './Checkout';
@@ -13,6 +15,11 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

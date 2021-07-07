@@ -21,6 +21,7 @@ router.get('/api/logout', (req, res) => {
 
 router.get('/api/user', (req, res) => {
   console.log(req.user);
+  console.log('USER');
   res.send(req.user);
 });
 
