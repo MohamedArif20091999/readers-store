@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 // export const fetchCartItems=async()=> {
 //     const {data}= await axios.get()
@@ -18,9 +19,10 @@ export const addToCart = (prodId) => async (dispatch) => {
 };
 
 export const getCart = () => async (dispatch) => {
-  console.log('get cart');
-  const res = await axios.get('/cart/user-cart');
-  console.log(res);
+  console.log('get cart----');
+  // const res = await axios.get('/cart/user-cart');
+  const res = await axiosInstance.get('/cart/user-cart');
+  console.log('res', res.data);
   dispatch({ type: 'GET_CART', payload: res.data });
 };
 
