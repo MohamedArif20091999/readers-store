@@ -4,7 +4,7 @@ import { cartItemsReducer } from './cart';
 export const authReducer = (state = null, action) => {
   switch (action.type) {
     case 'FETCH_USER':
-      console.log('REDUCE USER:', action.payload);
+      return action.payload;
     default:
       return state;
   }
@@ -23,4 +23,5 @@ export const productsReducer = (state = [], action) => {
 export default combineReducers({
   products: productsReducer,
   cart: cartItemsReducer,
+  auth: authReducer,
 });

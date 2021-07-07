@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const requireAuth = require('../middlewares/requireAuth');
 const router = express.Router();
 
 router.get(
@@ -19,9 +20,7 @@ router.get('/api/logout', (req, res) => {
   res.send(req.user);
 });
 
-router.get('/api/user', (req, res) => {
-  console.log(req.user);
-  console.log('USER');
+router.get('/api/user', requireAuth, (req, res) => {
   res.send(req.user);
 });
 
