@@ -1,24 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, addToCart } from '../actions';
-import { Box, CircularProgress, Grid, Card, CardMedia, Typography, CardContent, Button, CardActionArea, CardActions, Link, Backdrop } from '@material-ui/core';
+import {
+  Box,
+  Snackbar,
+  CircularProgress,
+  Grid,
+  Card,
+  CardMedia,
+  Typography,
+  CardContent,
+  Button,
+  CardActionArea,
+  CardActions,
+  Link,
+  Alert,
+  Backdrop,
+  IconButton,
+} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import MuiAlert from '@material-ui/lab/Alert';
 import Rating from '@material-ui/lab/Rating';
 import './css/Card.css';
 
 const BookItems = () => {
   const [open, setOpen] = useState(true);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const dispatch = useDispatch();
   let products = useSelector((state) => state.products);
   let cart = useSelector((state) => state.cart);
+  let user = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
 
+  function Alert(props) {
+    return <MuiAlert elevation={0} variant="filled" {...props} />;
+  }
+
   const addToCartClicked = (prodId) => {
-    console.log(prodId);
-    console.log('cart:', cart);
-    dispatch(addToCart(prodId));
+    if (!user) {
+      return setSnackbarOpen({ open: true });
+    }
+    return dispatch(addToCart(prodId));
   };
 
   console.log(products);
@@ -56,6 +81,17 @@ const BookItems = () => {
                       Add to cart
                     </Button>
                   </CardActions>
+                  <Snackbar
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'center',
+                    }}
+                    open={snackbarOpen}
+                    autoHideDuration={6000}
+                    onClose={() => setSnackbarOpen(false)}
+                  >
+                    <Alert severity="error">Please login to continue!</Alert>
+                  </Snackbar>
                 </CardActionArea>
               </Card>
             </Grid>

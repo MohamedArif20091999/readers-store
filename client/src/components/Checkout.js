@@ -12,7 +12,7 @@ const CheckOut = () => {
   const cartItems = useSelector((state) => state.cart);
   useEffect(() => {
     console.log(cartItems);
-    // dispatch(getCart());
+    dispatch(getCart());
   }, []);
 
   const deleteFromCart = (id) => {
@@ -52,7 +52,7 @@ const CheckOut = () => {
         </div>
       );
     }
-    return <h1>Loading....</h1>;
+    return <h1></h1>;
   };
 
   return (
