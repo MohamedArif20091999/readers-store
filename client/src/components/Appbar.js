@@ -23,7 +23,6 @@ const Header = () => {
   }, []);
 
   const get = () => {
-    console.log(cart);
     history.push('/checkout');
   };
 

@@ -11,7 +11,6 @@ const CheckOut = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
   useEffect(() => {
-    console.log(cartItems);
     dispatch(getCart());
   }, []);
 
@@ -19,7 +18,6 @@ const CheckOut = () => {
     dispatch(deleteItem(id));
   };
 
-  console.log(cartItems.length);
   const renderItems = () => {
     if (cartItems.length) {
       return (

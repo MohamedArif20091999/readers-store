@@ -46,7 +46,6 @@ const BookItems = () => {
     return dispatch(addToCart(prodId));
   };
 
-  console.log(products);
   const imageURL =
     'https://images.unsplash.com/photo-1624542313043-40df8401b342?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80';
 

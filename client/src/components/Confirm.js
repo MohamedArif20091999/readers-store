@@ -7,8 +7,6 @@ import './css/Confirm.css';
 const Confirm = () => {
   const products = useSelector((state) => state.cart);
   let sum = products.reduce((sum, product) => sum + product.price, 0);
-  console.log('SUM:', parseFloat(sum));
-  console.log(products.reduce((sum, product) => sum + product.price, 0));
 
   return (
     <div className="Confirm">
