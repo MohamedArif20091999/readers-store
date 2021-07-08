@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const requireAuth = require('../middlewares/requireAuth');
 const router = express.Router();
 
 router.get(
@@ -10,17 +11,15 @@ router.get(
 );
 
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  console.log('Will redirect to home page');
   res.redirect('/');
 });
 
 router.get('/api/logout', (req, res) => {
   req.logout();
-  res.send(req.user);
+  res.send({ user: 'loggedOut' });
 });
 
-router.get('/api/user', (req, res) => {
-  console.log(req.user);
+router.get('/api/user', requireAuth, (req, res) => {
   res.send(req.user);
 });
 

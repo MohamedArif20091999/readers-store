@@ -3,6 +3,20 @@ import axios from 'axios';
 
 export * from './cart';
 
+export const fetchUser = () => async (dispatch) => {
+  const res = await axios.get('/auth/api/user');
+  if (res.data.status === 'unAuthenticated') {
+    let data = false;
+    return dispatch({ type: 'FETCH_USER', payload: data });
+  }
+  return dispatch({ type: 'FETCH_USER', payload: true });
+};
+
+export const logOut = () => async (dispatch) => {
+  await axios.get('/auth/api/logout');
+  return dispatch({ type: 'FETCH_USER', payload: false });
+};
+
 export const fetchProducts = () => async (dispatch) => {
   const { data } = await axios.get('/product/all-products');
   //   console.log(data);

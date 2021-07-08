@@ -6,7 +6,6 @@ export const cartItemsReducer = (state = [], action) => {
     case 'GET_CART':
       return action.payload;
     case 'DELETE_ITEM':
-      console.log(action.payload);
       let filteredCart = state.filter((item) => item.id !== action.payload);
       return filteredCart;
     default:

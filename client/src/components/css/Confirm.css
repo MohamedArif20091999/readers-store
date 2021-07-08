@@ -1,0 +1,17 @@
+.Confirm {
+    background-color: #DADADA;
+    height: 150px;
+    /* width: 650px; */
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.text{
+    color: #212121;
+}
+.place-order{
+    padding-top: 16px !important;
+}
+.total{
+    margin: 0;
+}

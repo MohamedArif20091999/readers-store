@@ -4,25 +4,23 @@ import { getCart, deleteItem } from '../actions';
 import Header from './Appbar';
 import { Button, Card, CardContent, Typography, CardMedia } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Confirm from './Confirm';
 import './css/Checkout.css';
 
 const CheckOut = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
   useEffect(() => {
-    console.log(cartItems);
-    // dispatch(getCart());
+    dispatch(getCart());
   }, []);
 
   const deleteFromCart = (id) => {
     dispatch(deleteItem(id));
   };
 
-  console.log(cartItems.length);
   const renderItems = () => {
     if (cartItems.length) {
       return (
-        // <h1>CartItems</h1>
         <div>
           <Header></Header>
           <div className="container">
@@ -52,10 +50,15 @@ const CheckOut = () => {
         </div>
       );
     }
-    return <h1>Loading....</h1>;
+    return <h1></h1>;
   };
 
-  return renderItems();
+  return (
+    <div>
+      {renderItems()}
+      <Confirm></Confirm>
+    </div>
+  );
 };
 
 export default CheckOut;
