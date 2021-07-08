@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router';
 import StripeCheckout from 'react-stripe-checkout';
 
-const stripeWrapper = ({ amount }) => {
+const StripeWrapper = ({ amount }) => {
+  let history = useHistory();
+  const paymentFinished = () => {
+    return history.push('/');
+  };
+
   return (
     <StripeCheckout
       name="React store"
       amount={parseFloat(amount * 100).toFixed(2)}
-      token={(token) => console.log(token)}
+      token={(token) => paymentFinished()}
       stripeKey={process.env.REACT_APP_STRIPE_KEY}
     >
       <Button variant="contained" color="primary">
@@ -17,4 +23,4 @@ const stripeWrapper = ({ amount }) => {
   );
 };
 
-export default stripeWrapper;
+export default StripeWrapper;
