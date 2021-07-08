@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getCart } from '../actions';
+import { getCart, logOut } from '../actions';
 import Appbar from '@material-ui/core/AppBar';
 import { Box, Toolbar, Typography, Snackbar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
@@ -36,6 +36,11 @@ const Header = () => {
     return setSnackbarOpen({ open: true });
   };
 
+  const logout = () => {
+    alert('User logging out');
+    dispatch(logOut());
+  };
+
   const renderCartBadge = () => {
     if (user) {
       return (
@@ -54,7 +59,7 @@ const Header = () => {
   const loginButton = () => {
     if (user) {
       return (
-        <Button href="/auth/google" variant="contained" className="login-btn" color="#0000" disableElevation>
+        <Button onClick={() => logout()} variant="contained" className="login-btn" color="#0000" disableElevation>
           LOGOUT
         </Button>
       );

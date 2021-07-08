@@ -16,7 +16,7 @@ router.get('/google/callback', passport.authenticate('google'), (req, res) => {
 
 router.get('/api/logout', (req, res) => {
   req.logout();
-  res.send(req.user);
+  res.send({ user: 'loggedOut' });
 });
 
 router.get('/api/user', requireAuth, (req, res) => {

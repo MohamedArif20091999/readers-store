@@ -11,7 +11,7 @@ const Confirm = () => {
   return (
     <div className="Confirm">
       <div className="total">
-        <Typography variant="h2">Total: ${sum} </Typography>
+        <Typography variant="h2">Total: ${sum.toFixed(2)} </Typography>
       </div>
       <div className="place-order">
         <Button variant="contained" color="primary">

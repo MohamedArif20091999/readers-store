@@ -12,6 +12,11 @@ export const fetchUser = () => async (dispatch) => {
   return dispatch({ type: 'FETCH_USER', payload: true });
 };
 
+export const logOut = () => async (dispatch) => {
+  await axios.get('/auth/api/logout');
+  return dispatch({ type: 'FETCH_USER', payload: false });
+};
+
 export const fetchProducts = () => async (dispatch) => {
   const { data } = await axios.get('/product/all-products');
   //   console.log(data);
