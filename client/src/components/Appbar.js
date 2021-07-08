@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getCart } from '../actions';
 import Appbar from '@material-ui/core/AppBar';
-import { Box, Toolbar, Typography } from '@material-ui/core';
+import { Box, Toolbar, Typography, Snackbar } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Badge } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import './css/Appbar.css';
 
 const Header = () => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
   const dispatch = useDispatch();
   let cart = useSelector((state) => state.cart);
   let user = useSelector((state) => state.auth);
@@ -22,8 +25,15 @@ const Header = () => {
     dispatch(getCart());
   }, []);
 
+  const Alert = (props) => {
+    return <MuiAlert elevation={0} variant="filled" {...props} />;
+  };
+
   const get = () => {
-    history.push('/checkout');
+    if (user) {
+      return history.push('/checkout');
+    }
+    return setSnackbarOpen({ open: true });
   };
 
   const renderCartBadge = () => {
@@ -76,6 +86,17 @@ const Header = () => {
                 </Box>
               </Box>
             </div>
+            <Snackbar
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+              open={snackbarOpen}
+              autoHideDuration={6000}
+              onClose={() => setSnackbarOpen(false)}
+            >
+              <Alert severity="error">Please login to continue!</Alert>
+            </Snackbar>
           </Toolbar>
         </Appbar>
         <Toolbar />
