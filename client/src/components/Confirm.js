@@ -1,4 +1,5 @@
 import React from 'react';
+import StripeWrapper from './stripeWrapper';
 import { useSelector } from 'react-redux';
 import { Typography, Button, Icon } from '@material-ui/core';
 
@@ -14,9 +15,10 @@ const Confirm = () => {
         <Typography variant="h2">Total: ${sum.toFixed(2)} </Typography>
       </div>
       <div className="place-order">
-        <Button variant="contained" color="primary">
+        {/* <Button variant="contained" color="primary">
           Place Order
-        </Button>
+        </Button> */}
+        <StripeWrapper amount={sum}></StripeWrapper>
       </div>
     </div>
   );

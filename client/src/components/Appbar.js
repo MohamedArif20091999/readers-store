@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   const logout = () => {
-    alert('User logging out');
+    // alert('User logging out');
     dispatch(logOut());
   };
 
